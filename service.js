@@ -4,6 +4,8 @@ const express = require('express')
 const exec = require('child_process').exec
 const app = express()
 
+app.route('/health').get((req, res) => res.send('ok'))
+
 app.use((req, res) => {
   console.log(`service-2: ${req.method} ${req.url}`)
   exec('hostname', (err, stdout) => {
